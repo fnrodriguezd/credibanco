@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>15 — La medición</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+
+              .headline {
+    margin-bottom: var(--space-lg);
+  }
+
+
+  .trust-line {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 15px;
+    color: var(--text-secondary);
+    padding: var(--space-sm) var(--space-lg);
+    border: 1px solid var(--border-default);
+    border-radius: 999px;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .trust-line strong {
+    color: var(--action-primary);
+    font-weight: 700;
+  }
+
+  /* ---------- Indicadores del sistema ---------- */
+  .section-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-lg);
+  }
+
+  .indicators {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #FAFAFA;
+    border-radius: 12px;
+    padding: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .indicator {
+    padding: 0 var(--space-lg) 0 0;
+    border-left: 1px solid var(--border-default);
+    padding-left: var(--space-lg);
+  }
+
+  .indicator:first-child {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .indicator-name {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+  }
+
+  .indicator-desc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  /* ---------- Industry benchmarks ---------- */
+  .benchmarks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: var(--space-lg);
+  }
+
+  .benchmark {
+    padding: 0 var(--space-xl);
+    border-left: 1px solid var(--border-default);
+  }
+
+  .benchmark:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .benchmark-stat {
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--action-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .benchmark-desc {
+    font-size: 14px;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .benchmark-source {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .benchmarks-note {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-3xl);
+  }
+
+  /* ---------- Lower grid ---------- */
+  .lower-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: start;
+  }
+
+  /* Metrics with trend arrows */
+  .metric-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    font-size: 16px;
+    color: var(--text-primary);
+  }
+
+  .trend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: var(--feedback-success);
+    flex-shrink: 0;
+  }
+
+  .trend svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .key-indicators {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-lg);
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px dashed var(--border-default);
+  }
+
+  .key-chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .key-chip .trend {
+    width: 14px;
+    height: 14px;
+  }
+
+  .key-chip .trend svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  /* Business translation */
+  .translation-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--border-default);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .translation-row:last-child {
+    border-bottom: none;
+  }
+
+  .t-from {
+    color: var(--text-secondary);
+  }
+
+  .t-arrow {
+    color: var(--action-primary);
+    font-weight: 700;
+  }
+
+  .t-to {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+        .headline { font-size: 24px; }
+    .indicators { grid-template-columns: 1fr 1fr; row-gap: var(--space-lg); }
+    .indicator:nth-child(3) { border-left: none; padding-left: 0; }
+    .benchmarks { grid-template-columns: 1fr; row-gap: var(--space-lg); }
+    .benchmark { border-left: none; padding-left: 0; }
+    .lower-grid { grid-template-columns: 1fr; gap: var(--space-2xl); }
+    .translation-row { flex-direction: column; gap: 2px; }
+  }
+
+  /* ---------- Deck navigation ---------- */
+                          </style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="stage">
+
+      <div class="eyebrow">15 — La medición</div>
+      <h1 class="headline">Medir el valor del Design System</h1>
+      <div class="trust-line"><strong>Confianza:</strong> Consistencia · Accesibilidad · Claridad · Menos errores</div>
+
+      <div class="section-label">Indicadores del sistema</div>
+      <div class="indicators">
+        <div class="indicator">
+          <div class="indicator-name">Adopción</div>
+          <div class="indicator-desc">% de equipos y productos que utilizan el sistema</div>
+        </div>
+        <div class="indicator">
+          <div class="indicator-name">Cobertura</div>
+          <div class="indicator-desc">% de interfaces y necesidades resueltas con componentes existentes</div>
+        </div>
+        <div class="indicator">
+          <div class="indicator-name">Uso correcto</div>
+          <div class="indicator-desc">% de componentes y tokens utilizados según las reglas definidas</div>
+        </div>
+        <div class="indicator">
+          <div class="indicator-name">Calidad</div>
+          <div class="indicator-desc">Accesibilidad · Variaciones fuera del sistema · Incidencias</div>
+        </div>
+      </div>
+
+      <div class="section-label">Referencias de la industria</div>
+      <div class="benchmarks">
+        <div class="benchmark">
+          <div class="benchmark-stat">−30%</div>
+          <div class="benchmark-desc">tiempo de diseño</div>
+          <div class="benchmark-source">Shopify Polaris</div>
+        </div>
+        <div class="benchmark">
+          <div class="benchmark-stat">−50%</div>
+          <div class="benchmark-desc">tiempo de desarrollo</div>
+          <div class="benchmark-source">IBM Carbon</div>
+        </div>
+        <div class="benchmark">
+          <div class="benchmark-stat">−75%</div>
+          <div class="benchmark-desc">tiempo de QA</div>
+          <div class="benchmark-source">IBM Carbon</div>
+        </div>
+      </div>
+      <div class="benchmarks-note">Cifras públicas reportadas por cada equipo — referencia de la industria, no proyección propia de este MVP.</div>
+
+      <div class="lower-grid">
+        <div class="efficiency-col">
+          <div class="section-label">Eficiencia y escala</div>
+          <div class="metric-row">
+            <div class="trend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+            Tiempo de diseño
+          </div>
+          <div class="metric-row">
+            <div class="trend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+            Tiempo de desarrollo
+          </div>
+          <div class="metric-row">
+            <div class="trend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div>
+            Tiempo de actualización
+          </div>
+
+          <div class="key-indicators">
+            <div class="key-chip"><div class="trend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>Adopción</div>
+            <div class="key-chip"><div class="trend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>Cobertura</div>
+            <div class="key-chip"><div class="trend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>Accesibilidad</div>
+            <div class="key-chip"><div class="trend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>Duplicación</div>
+            <div class="key-chip"><div class="trend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>Incidencias</div>
+            <div class="key-chip"><div class="trend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>Tiempo</div>
+          </div>
+        </div>
+
+        <div class="business-col">
+          <div class="section-label">Lectura para negocio</div>
+          <div class="translation-row">
+            <span class="t-from">Menos tiempo de desarrollo</span>
+            <span class="t-arrow">→</span>
+            <span class="t-to">menor costo por feature</span>
+          </div>
+          <div class="translation-row">
+            <span class="t-from">Menos incidencias y variaciones</span>
+            <span class="t-arrow">→</span>
+            <span class="t-to">menor riesgo operativo</span>
+          </div>
+          <div class="translation-row">
+            <span class="t-from">Mayor consistencia</span>
+            <span class="t-arrow">→</span>
+            <span class="t-to">mayor confianza del usuario</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-14-la-adopcion.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a href="slide-16-la-evolucion.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      var tag = document.activeElement.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

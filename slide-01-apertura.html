@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>01 — Apertura</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --brand-teal: #00AEA9;
+    --brand-black: #000000;
+    --brand-amber: #FCB600;
+    --action-primary: #006A66;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5C5C5C;
+    --border-default: #B0B0B0;
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
+    --space-2xl: 32px;
+    --space-3xl: 48px;
+    --space-4xl: 64px;
+
+    --radius-sm: 4px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-4xl) 96px;
+    position: relative;
+  }
+
+  .content {
+    max-width: 780px;
+    width: 100%;
+  }
+
+  .eyebrow {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--action-primary);
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .headline {
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .accent-bar {
+    width: 64px;
+    height: 4px;
+    background: var(--action-primary);
+    border-radius: var(--radius-sm);
+    margin: var(--space-xl) 0;
+  }
+
+  .subheadline {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .meta .divider {
+    width: 1px;
+    height: 12px;
+    background: var(--border-default);
+  }
+
+  .meta .author {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  /* ---------- Token swatches — guiño a los foundations ---------- */
+  .swatches {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-3xl);
+  }
+
+  .swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+  }
+
+  .swatch.black { background: var(--brand-black); }
+  .swatch.teal { background: var(--brand-teal); }
+  .swatch.amber { background: var(--brand-amber); }
+  .swatch.action { background: var(--action-primary); }
+
+  @media (max-width: 720px) {
+    .slide { padding: var(--space-2xl); padding-bottom: 100px; }
+    .headline { font-size: 38px; }
+    .subheadline { font-size: 18px; }
+    .swatches { position: static; margin-top: var(--space-3xl); }
+  }
+
+  /* ---------- Deck navigation ---------- */
+  .deck-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-xl);
+    background: #FFFFFF;
+    border-top: 1px solid var(--border-default);
+  }
+
+  .nav-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid var(--border-default);
+    background: #FFFFFF;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .nav-btn:hover {
+    border-color: var(--action-primary);
+    color: var(--action-primary);
+  }
+
+  .nav-btn.primary {
+    background: var(--action-primary);
+    border-color: var(--action-primary);
+    color: #FFFFFF;
+  }
+
+  .nav-btn.primary:hover {
+    opacity: 0.85;
+    color: #FFFFFF;
+  }
+
+  .nav-btn.disabled {
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  .nav-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nav-btn.accent {
+    border-color: var(--action-primary);
+    color: var(--action-primary);
+  }
+
+  .nav-btn.accent:hover {
+    background: var(--action-primary);
+    color: #FFFFFF;
+  }
+
+  .nav-personal {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .nav-personal a {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+
+  .nav-personal a:hover {
+    color: var(--action-primary);
+  }
+
+  .nav-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border-default);
+    margin: 0 var(--space-xs);
+  }
+</style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="content">
+      <div class="eyebrow">01 — Apertura</div>
+      <h1 class="headline">Diseñar confianza.<br>Escalar experiencias.</h1>
+      <div class="accent-bar"></div>
+      <div class="subheadline">Design System para Credibanco</div>
+
+      <div class="meta">
+        <span>UX</span>
+        <span>·</span>
+        <span>Product Design</span>
+        <span>·</span>
+        <span>Design Systems</span>
+        <div class="divider"></div>
+        <span class="author">Fabio Rodríguez</span>
+        <span>·</span>
+        <span>2026</span>
+      </div>
+
+      <div class="swatches">
+        <div class="swatch black"></div>
+        <div class="swatch teal"></div>
+        <div class="swatch amber"></div>
+        <div class="swatch action"></div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <span class="nav-btn disabled" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </span>
+      <a href="slide-02-el-reto.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

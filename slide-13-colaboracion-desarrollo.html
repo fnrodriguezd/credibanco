@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>13 — Colaboración con Desarrollo</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+
+              .headline {
+    margin-bottom: var(--space-sm);
+  }
+
+
+  .intro {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 70ch;
+  }
+
+  /* ---------- Decision case card ---------- */
+  .case-card {
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    width: 300px;
+    flex-shrink: 0;
+  }
+
+  .case-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-xs);
+  }
+
+  .case-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .case-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+  }
+
+  .case-name {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .case-dots {
+    display: flex;
+    gap: 3px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--border-default);
+  }
+
+  .dot.filled {
+    background: var(--action-primary);
+  }
+
+  .case-footer {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-default);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--action-primary);
+    line-height: 1.5;
+  }
+
+  /* ---------- Process ---------- */
+  .process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .step {
+    padding: 0 var(--space-xl);
+    border-left: 1px solid var(--border-default);
+  }
+
+  .step:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: var(--action-primary);
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .step-name {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+  }
+
+  .step-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  .step-extra {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px dashed var(--border-default);
+  }
+
+  /* ---------- Lower section: equation + case card ---------- */
+  .lower-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--space-4xl);
+    align-items: center;
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--border-default);
+  }
+
+  .equation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-md);
+  }
+
+  .eq-term {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--action-primary);
+  }
+
+  .eq-symbol {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .eq-result {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 900px) {
+        .headline { font-size: 24px; }
+    .lower-grid { grid-template-columns: 1fr; gap: var(--space-2xl); }
+    .process { grid-template-columns: 1fr 1fr; row-gap: var(--space-2xl); }
+    .step:nth-child(3) { border-left: none; padding-left: 0; }
+    .eq-term, .eq-result { font-size: 20px; }
+  }
+
+  /* ---------- Deck navigation ---------- */
+                          </style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="stage">
+
+      <div class="eyebrow">13 — Colaboración con Desarrollo</div>
+      <h1 class="headline">Gestionar restricciones técnicas</h1>
+      <p class="intro" style="margin-bottom: var(--space-3xl);">Cuando una restricción técnica afecta una propuesta de diseño, la decisión se toma sobre el problema completo.</p>
+
+      <div class="process">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-name">Entender</div>
+          <div class="step-desc">Identificar la causa y el impacto real de la restricción.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-name">Evaluar</div>
+          <div class="step-desc">Comparar alternativas según: Usuario · Accesibilidad · Seguridad · Negocio · Viabilidad técnica · Esfuerzo</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-name">Decidir</div>
+          <div class="step-desc">Elegir la alternativa que mejor resuelva la necesidad del usuario dentro de las condiciones reales.</div>
+          <div class="step-extra">Si la solución es temporal, se documenta la deuda y se define su revisión.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-name">Prevenir</div>
+          <div class="step-desc">Design + Dev desde el inicio · Validación técnica de componentes · Prototipos funcionales · Pruebas en código</div>
+        </div>
+      </div>
+
+      <div class="lower-grid">
+        <div class="eq-col">
+          <div class="equation">
+            <span class="eq-term">Objetivo del usuario</span>
+            <span class="eq-symbol">+</span>
+            <span class="eq-term">Viabilidad técnica</span>
+            <span class="eq-symbol">=</span>
+            <span class="eq-result">Decisión</span>
+          </div>
+        </div>
+
+        <div class="case-col">
+          <div class="case-card">
+            <div class="case-label">Ejemplo de evaluación</div>
+            <div class="case-title">¿Agregar variante Ghost al Button?</div>
+            <div class="case-row">
+              <div class="case-name">Usuario</div>
+              <div class="case-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div>
+            </div>
+            <div class="case-row">
+              <div class="case-name">Accesibilidad</div>
+              <div class="case-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+            </div>
+            <div class="case-row">
+              <div class="case-name">Seguridad</div>
+              <div class="case-dots"><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div>
+            </div>
+            <div class="case-row">
+              <div class="case-name">Negocio</div>
+              <div class="case-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+            </div>
+            <div class="case-row">
+              <div class="case-name">Viabilidad técnica</div>
+              <div class="case-dots"><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div>
+            </div>
+            <div class="case-row">
+              <div class="case-name">Esfuerzo</div>
+              <div class="case-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+            </div>
+            <div class="case-footer">Decisión: se pospone — bajo impacto, alto esfuerzo</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-12-la-gobernanza.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a href="slide-14-la-adopcion.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      var tag = document.activeElement.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

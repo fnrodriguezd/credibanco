@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>10 — El resultado aplicado</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+
+            .head-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--space-2xl);
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+  }
+
+    .headline {
+    margin-bottom: var(--space-sm);
+  }
+
+
+  .intro {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 70ch;
+  }
+
+  .figma-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--action-primary);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .figma-link:hover {
+    opacity: 0.75;
+  }
+
+  .figma-link svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .screens {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: var(--space-2xl);
+  }
+
+  .screen {
+    padding: 0 var(--space-xl);
+    border-left: 1px solid var(--border-default);
+  }
+
+  .screen:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .screen-frame {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto var(--space-xl);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+    border: 1px solid var(--border-default);
+  }
+
+  .screen-frame img {
+    width: 100%;
+    display: block;
+  }
+
+  .screen-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--action-primary);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+  }
+
+  .screen-points {
+    list-style: none;
+  }
+
+  .screen-points li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    padding-left: var(--space-lg);
+    position: relative;
+    margin-bottom: var(--space-md);
+  }
+
+  .screen-points li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-sm);
+    background: var(--action-primary);
+  }
+
+  .screen-note {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* ---------- Resultado ---------- */
+  .result {
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--border-default);
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .result-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .result-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    max-width: 70ch;
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+        .headline { font-size: 24px; }
+    .screens { grid-template-columns: 1fr; row-gap: var(--space-2xl); }
+    .screen { border-left: none; padding-left: 0; }
+    .result { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Deck navigation ---------- */
+                          </style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="stage">
+
+      <div class="head-row">
+        <div>
+          <div class="eyebrow">10 — El resultado aplicado</div>
+          <h1 class="headline">Rediseño de las pantallas auditadas</h1>
+          <p class="intro">Los mismos componentes del MVP, aplicados a las tres pantallas auditadas en la sección 04.</p>
+        </div>
+        <a href="https://www.figma.com/design/84wwrixT3wzTcs2A91SokA/Credibanco---Design-System-MVP?node-id=0-1&t=VgmTfXtJFBPWLcQI-1" target="_blank" class="figma-link">
+          Ver en Figma
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="screens">
+
+        <div class="screen">
+          <div class="screen-frame"><img src="img/screen-login.png" alt="Pantalla de Login rediseñada"></div>
+          <div class="screen-name">Login</div>
+          <ul class="screen-points">
+            <li>Jerarquía tipográfica y de color clara entre título, labels y texto de apoyo</li>
+            <li>Affordance completa en los campos, no solo línea inferior</li>
+            <li>"¿Olvidaste tu contraseña?" junto al campo que resuelve, no aislado</li>
+            <li>Mensajes de error específicos y accionables, sin lenguaje técnico</li>
+            <li>Ícono de contraseña con estado visual propio y contraste verificado</li>
+            <li>Estado disabled real en el botón, no solo estético</li>
+            <li>Acceso a ayuda visible desde el inicio, no solo tras un error</li>
+          </ul>
+        </div>
+
+        <div class="screen">
+          <div class="screen-frame"><img src="img/screen-registro.png" alt="Pantalla de Registro rediseñada"></div>
+          <div class="screen-name">Registro</div>
+          <ul class="screen-points">
+            <li>Botón de volver, ausente en el diseño original</li>
+            <li>Misma jerarquía visual y tokens que Login, sin inconsistencias entre pantallas</li>
+            <li>Íconos que corresponden a la acción real, no genéricos</li>
+            <li>Cards con jerarquía de acción clara, sin ambigüedad entre botones</li>
+            <li>Consecuente con "Regístrate aquí": pregunta la situación real antes de pedir conectar un dispositivo</li>
+          </ul>
+        </div>
+
+        <div class="screen">
+          <div class="screen-frame"><img src="img/screen-ayuda.png" alt="Pantalla de Ayuda rediseñada"></div>
+          <div class="screen-name">Ayuda</div>
+          <ul class="screen-points">
+            <li>Estructura de layout consistente con el resto del flujo</li>
+            <li>Tres opciones reales y claras, en lugar de una pantalla que no explica cómo ayuda</li>
+            <li>Acción directa para contactar (llamar), sin pasos intermedios</li>
+            <li>Acceso a ayuda ya no depende de que ocurra un error primero</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="result">
+        <div class="result-label">Resultado</div>
+        <div class="result-text">Cada pantalla resuelve hallazgos específicos de la auditoría original, con el mismo lenguaje visual y de contenido en los tres casos.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-09-el-mvp.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a href="slide-11-la-implementacion.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      var tag = document.activeElement.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

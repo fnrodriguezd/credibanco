@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>03 — Mi enfoque</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+
+            /* ---------- Header ---------- */
+    .headline {
+    max-width: 640px;
+    margin-bottom: var(--space-md);
+  }
+
+
+  .intro {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 60ch;
+    margin-bottom: var(--space-3xl);
+  }
+
+  /* ---------- Questions row ---------- */
+  .questions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .question {
+    padding: 0 var(--space-xl);
+    border-left: 1px solid var(--border-default);
+  }
+
+  .question:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .question:not(:first-child) {
+    padding-left: var(--space-xl);
+  }
+
+  .q-index {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: var(--action-primary);
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .q-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+    line-height: 1.3;
+  }
+
+  .q-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  /* ---------- Resultado esperado ---------- */
+  .result {
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--border-default);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .result-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--action-primary);
+    letter-spacing: 0.02em;
+  }
+
+  .result-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    max-width: 70ch;
+  }
+
+  @media (max-width: 900px) {
+        .headline { font-size: 28px; }
+    .questions { grid-template-columns: 1fr 1fr; row-gap: var(--space-2xl); }
+    .question:nth-child(3) { border-left: none; padding-left: 0; }
+    .result { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Deck navigation ---------- */
+                          </style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="stage">
+
+      <div class="eyebrow">03 — Mi enfoque</div>
+      <h1 class="headline">Diseñar confianza y escalar experiencias.</h1>
+      <p class="intro">Un Design System debe conectar Diseño, Desarrollo y Negocio alrededor de criterios compartidos. Mi enfoque parte de cuatro preguntas:</p>
+
+      <div class="questions">
+        <div class="question">
+          <div class="q-index">1</div>
+          <div class="q-title">¿Qué tenemos?</div>
+          <div class="q-desc">Auditar productos, componentes y patrones existentes.</div>
+        </div>
+        <div class="question">
+          <div class="q-index">2</div>
+          <div class="q-title">¿Qué debemos estandarizar?</div>
+          <div class="q-desc">Identificar las decisiones que se repiten y definir cuándo deben convertirse en reglas del sistema.</div>
+        </div>
+        <div class="question">
+          <div class="q-index">3</div>
+          <div class="q-title">¿Cómo lo llevamos a producción?</div>
+          <div class="q-desc">Conectar tokens, componentes y patrones desde Figma hasta el producto final.</div>
+        </div>
+        <div class="question">
+          <div class="q-index">4</div>
+          <div class="q-title">¿Cómo lo mantenemos?</div>
+          <div class="q-desc">Definir responsabilidades, contribución, versionamiento, adopción y métricas.</div>
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="result-label">Resultado esperado</div>
+        <div class="result-text">Una experiencia más consistente y confiable para los usuarios, con equipos capaces de construir y evolucionar productos digitales con mayor eficiencia.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-02-el-reto.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a href="slide-04-el-analisis.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>02 — El reto</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+
+          .slide-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center;
+    width: 100%;
+  }
+
+  /* ---------- Left column ---------- */
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+    max-width: 480px;
+  }
+
+  
+  .body-copy {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 42ch;
+  }
+
+  .body-copy + .body-copy {
+    margin-top: var(--space-md);
+  }
+
+  .footer-mark {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    margin-top: var(--space-xl);
+  }
+
+  .footer-mark .brand {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .footer-mark .brand span {
+    color: var(--brand-teal);
+  }
+
+  .footer-mark .divider {
+    width: 1px;
+    height: 12px;
+    background: var(--border-default);
+  }
+
+  .footer-mark .author {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* ---------- Right column ---------- */
+  .right {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border-default);
+  }
+
+  .need {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-xl) 0;
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .need-marker {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-sm);
+    background: var(--action-primary);
+    margin-top: 8px;
+  }
+
+  .need-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .need-desc {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    max-width: 40ch;
+  }
+
+  @media (max-width: 860px) {
+        .headline { font-size: 32px; }
+  }
+
+  /* ---------- Deck navigation ---------- */
+                          </style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="stage slide-grid">
+
+    <div class="left">
+      <div class="eyebrow">02 — El reto</div>
+      <h1 class="headline">Muchos productos, diferentes equipos, una sola experiencia.</h1>
+      <p class="body-copy">Credibanco tiene múltiples productos digitales desarrollados por diferentes equipos. Hoy existen diferencias en componentes, estilos, patrones de interacción y criterios de accesibilidad.</p>
+      <p class="body-copy">El reto es crear una experiencia consistente entre productos y facilitar que los equipos puedan construirla y mantenerla.</p>
+
+      <div class="footer-mark">
+        <div class="brand">credi<span>banco</span> · pago móvil</div>
+        <div class="divider"></div>
+        <div class="author">Fabio Rodríguez — Design System</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="need">
+        <div class="need-marker"></div>
+        <div>
+          <div class="need-title">Consistencia</div>
+          <div class="need-desc">Componentes, patrones y criterios compartidos.</div>
+        </div>
+      </div>
+      <div class="need">
+        <div class="need-marker"></div>
+        <div>
+          <div class="need-title">Escala</div>
+          <div class="need-desc">Soluciones reutilizables que acompañen el crecimiento de los productos.</div>
+        </div>
+      </div>
+      <div class="need">
+        <div class="need-marker"></div>
+        <div>
+          <div class="need-title">Colaboración</div>
+          <div class="need-desc">Un lenguaje común entre Diseño, Desarrollo y Producto.</div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-01-apertura.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a href="slide-03-mi-enfoque.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

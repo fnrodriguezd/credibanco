@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>08 — La arquitectura</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+
+              .headline {
+    margin-bottom: var(--space-2xl);
+  }
+
+
+  /* ---------- Timeline ---------- */
+  .timeline {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .level {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: var(--space-xl);
+  }
+
+  .level-marker {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .level-num {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: var(--action-primary);
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .level:not(:last-child) .level-marker::after {
+    content: "";
+    position: absolute;
+    top: 32px;
+    bottom: -24px;
+    width: 1px;
+    background: var(--border-default);
+  }
+
+  .level-body {
+    padding-bottom: var(--space-2xl);
+  }
+
+  .level-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+  }
+
+  .level-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--space-sm);
+    max-width: 56ch;
+  }
+
+  .level-tags {
+    font-size: 13px;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  .level-flow {
+    font-size: 13px;
+    color: var(--action-primary);
+    font-weight: 600;
+    margin-top: var(--space-xs);
+  }
+
+  /* ---------- Footer columns ---------- */
+  .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border-default);
+    padding-top: var(--space-xl);
+  }
+
+  .fcol {
+    padding: 0 var(--space-xl);
+    border-left: 1px solid var(--border-default);
+  }
+
+  .fcol:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .fcol-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .fcol-content {
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  .fcol-flow {
+    font-size: 14px;
+    color: var(--action-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+        .headline { font-size: 24px; }
+    .footer-cols { grid-template-columns: 1fr; row-gap: var(--space-xl); }
+    .fcol { border-left: none; padding-left: 0; }
+  }
+
+  /* ---------- Deck navigation ---------- */
+                          </style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="stage">
+
+      <div class="eyebrow">08 — La arquitectura</div>
+      <h1 class="headline">Así se organiza el Design System</h1>
+
+      <div class="timeline">
+
+        <div class="level">
+          <div class="level-marker"><div class="level-num">01</div></div>
+          <div class="level-body">
+            <div class="level-name">Foundations</div>
+            <div class="level-desc">Definen los valores que comparte todo el sistema.</div>
+            <div class="level-tags">Color · Tipografía · Espaciado · Grid · Radius · Elevación · Iconografía · Motion · Design Tokens · Accesibilidad</div>
+          </div>
+        </div>
+
+        <div class="level">
+          <div class="level-marker"><div class="level-num">02</div></div>
+          <div class="level-body">
+            <div class="level-name">Components</div>
+            <div class="level-desc">Resuelven elementos de interfaz reutilizables.</div>
+            <div class="level-tags">Button · Input · Card · Select · Checkbox · Modal · Toast</div>
+            <div class="level-tags">Variantes · Estados · Propiedades · Tokens · Accesibilidad</div>
+          </div>
+        </div>
+
+        <div class="level">
+          <div class="level-marker"><div class="level-num">03</div></div>
+          <div class="level-body">
+            <div class="level-name">Patterns</div>
+            <div class="level-desc">Resuelven necesidades de interacción más completas.</div>
+            <div class="level-tags">Formularios · Validación · Errores · Navegación · Ayuda · Flujos de pago · Confirmaciones</div>
+          </div>
+        </div>
+
+        <div class="level">
+          <div class="level-marker"><div class="level-num">04</div></div>
+          <div class="level-body">
+            <div class="level-name">Experiencias</div>
+            <div class="level-desc">Combinan componentes y patrones para resolver tareas completas.</div>
+            <div class="level-flow">Registro → Pago → Confirmación → Comprobante</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-cols">
+        <div class="fcol">
+          <div class="fcol-label">Gobernanza</div>
+          <div class="fcol-content">Contribución · Revisión · Versionamiento · Documentación · Deprecación · Métricas</div>
+        </div>
+        <div class="fcol">
+          <div class="fcol-label">Implementación</div>
+          <div class="fcol-flow">Figma → Tokens → Código → Equipos</div>
+        </div>
+        <div class="fcol">
+          <div class="fcol-label">Roadmap</div>
+          <div class="fcol-flow">Priorizar → Construir → Adoptar → Medir → Evolucionar</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-07-la-respuesta.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a href="slide-09-el-mvp.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

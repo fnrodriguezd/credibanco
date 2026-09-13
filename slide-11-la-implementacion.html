@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>11 — La implementación</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+
+            .content-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-4xl);
+    align-items: start;
+  }
+
+    .headline {
+    margin-bottom: var(--space-sm);
+  }
+
+
+  .intro {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 70ch;
+    margin-bottom: var(--space-3xl);
+  }
+
+  /* ---------- Flow ---------- */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .flow-step {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .flow-step:last-child {
+    border-bottom: none;
+  }
+
+  .flow-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--action-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .flow-desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  /* ---------- Code panel (VS Code Dark+) ---------- */
+  .code-panel {
+    background: #1E1E1E;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  }
+
+  .code-tab {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    background: #252526;
+    border-bottom: 1px solid #1E1E1E;
+  }
+
+  .code-tab-icon {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: #DCB67A;
+  }
+
+  .code-tab-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #CCCCCC;
+  }
+
+  .code-body {
+    display: flex;
+    padding: var(--space-lg) 0;
+  }
+
+  .code-lines {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #6E7681;
+    text-align: right;
+    padding: 0 var(--space-md);
+    user-select: none;
+  }
+
+  .code-content {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    padding-right: var(--space-lg);
+    white-space: pre;
+  }
+
+  .c-punct { color: #D4D4D4; }
+  .c-key { color: #9CDCFE; }
+  .c-string { color: #CE9178; }
+  .c-comment { color: #6A9955; }
+
+  .highlight-row {
+    background: rgba(0, 174, 169, 0.1);
+    display: block;
+    margin: 0 calc(-1 * var(--space-lg));
+    padding: 0 var(--space-lg);
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 7px;
+    height: 15px;
+    background: #AEAFAD;
+    vertical-align: text-bottom;
+    margin-left: 2px;
+    animation: blink 1s steps(1) infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  /* ---------- Example ---------- */
+  .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-lg);
+  }
+
+  .example {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .example-token {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: #FAFAFA;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+  }
+
+  .example-arrow {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+
+  /* ---------- Note ---------- */
+  .note {
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+  }
+
+  .note-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--action-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-md);
+  }
+
+  .note-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 75ch;
+  }
+
+  .note-text + .note-text {
+    margin-top: var(--space-md);
+  }
+
+  .note-text strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+        .headline { font-size: 24px; }
+    .content-grid { grid-template-columns: 1fr; gap: var(--space-2xl); }
+    .example-token { font-size: 11px; }
+    .code-content, .code-lines { font-size: 11px; }
+  }
+
+  /* ---------- Deck navigation ---------- */
+                          </style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="stage">
+
+      <div class="eyebrow">11 — La implementación</div>
+      <h1 class="headline">Del diseño al código</h1>
+      <p class="intro">El sistema debe mantener las mismas reglas en Figma y en desarrollo.</p>
+
+      <div class="content-grid">
+        <div class="left-col">
+
+          <div class="flow">
+            <div class="flow-step">
+              <div class="flow-name">Tokens</div>
+              <div class="flow-desc">Valores compartidos</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-name">Figma</div>
+              <div class="flow-desc">Variables y componentes</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-name">Código</div>
+              <div class="flow-desc">Tokens y componentes implementados</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-name">Equipos</div>
+              <div class="flow-desc">Componentes listos para usar</div>
+            </div>
+          </div>
+
+          <div class="example-label">Ejemplo</div>
+          <div class="example">
+            <div class="example-token">color.action.primary</div>
+            <div class="example-arrow">→</div>
+            <div class="example-token">Button / Primary</div>
+            <div class="example-arrow">→</div>
+            <div class="example-token">Variable Figma</div>
+            <div class="example-arrow">→</div>
+            <div class="example-token">Token de código</div>
+            <div class="example-arrow">→</div>
+            <div class="example-token">Implementación</div>
+          </div>
+
+          <div class="note">
+            <div class="note-label">Nota sobre Variables en Figma</div>
+            <div class="note-text">Variables permite <strong>1 modo</strong> por colección en el plan gratuito, <strong>10</strong> en Profesional, <strong>20</strong> en Organización, e <strong>ilimitados</strong> en Empresa. El número de variables en sí no tiene límite.</div>
+            <div class="note-text">Este MVP usa Variables para Foundations (color, tipografía, espaciado, radius), con un solo modo por colección. La expansión a modos adicionales queda planteada en el roadmap de escala.</div>
+          </div>
+
+        </div>
+
+        <div class="right-col">
+          <div class="code-panel">
+            <div class="code-tab">
+              <div class="code-tab-icon"></div>
+              <div class="code-tab-name">design-tokens.json</div>
+            </div>
+            <div class="code-body">
+              <div class="code-lines">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14</div>
+              <div class="code-content"><span class="c-punct">{</span>
+<span class="c-punct">  "</span><span class="c-key">color</span><span class="c-punct">": {</span>
+<span class="c-punct">    "</span><span class="c-key">action</span><span class="c-punct">": {</span>
+<span class="highlight-row"><span class="c-punct">      "</span><span class="c-key">primary</span><span class="c-punct">": {</span>
+<span class="c-punct">        "</span><span class="c-key">value</span><span class="c-punct">": "</span><span class="c-string">#006A66</span><span class="c-punct">",</span>
+<span class="c-punct">        "</span><span class="c-key">type</span><span class="c-punct">": "</span><span class="c-string">color</span><span class="c-punct">"</span>
+<span class="c-punct">      }</span></span>
+<span class="c-punct">    }</span>
+<span class="c-punct">  },</span>
+<span class="c-punct">  "</span><span class="c-key">spacing</span><span class="c-punct">": {</span>
+<span class="c-punct">    "</span><span class="c-key">md</span><span class="c-punct">": {</span>
+<span class="c-punct">      "</span><span class="c-key">value</span><span class="c-punct">": "</span><span class="c-string">12</span><span class="c-punct">",</span>
+<span class="c-punct">      "</span><span class="c-key">type</span><span class="c-punct">": "</span><span class="c-string">number</span><span class="c-punct">"</span>
+<span class="c-punct">    }</span>
+<span class="c-punct">  }</span>
+<span class="c-punct">}</span><span class="cursor"></span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-10-el-resultado-aplicado.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a href="slide-12-la-gobernanza.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      var tag = document.activeElement.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Inicio — Prueba técnica</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --brand-teal: #00AEA9;
+    --brand-black: #000000;
+    --brand-amber: #FCB600;
+    --action-primary: #006A66;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5C5C5C;
+    --border-default: #B0B0B0;
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
+    --space-2xl: 32px;
+    --space-3xl: 48px;
+    --space-4xl: 64px;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-4xl);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 640px;
+  }
+
+  /* ---------- Header ---------- */
+  .eyebrow {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--action-primary);
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-lg);
+  }
+
+  .headline {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .subline {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-4xl);
+  }
+
+  /* ---------- Main links — componente Card del sistema ---------- */
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .card {
+    display: grid;
+    grid-template-columns: 24px 1fr 24px;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    border-radius: 16px;
+    background: #FFFFFF;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.16);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .card.disabled {
+    pointer-events: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+  }
+
+  .card-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .card.disabled .card-icon {
+    color: var(--text-secondary);
+  }
+
+  .link-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .link-desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 42ch;
+  }
+
+  .card-trailing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--action-primary);
+  }
+
+  .card-trailing svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pending-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    padding: 2px 8px;
+    white-space: nowrap;
+    justify-self: end;
+  }
+
+  /* ---------- Deck navigation ---------- */
+  .deck-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-xl);
+    background: #FFFFFF;
+    border-top: 1px solid var(--border-default);
+  }
+
+  .nav-personal {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .nav-personal a {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+
+  .nav-personal a:hover {
+    color: var(--action-primary);
+  }
+
+  .page {
+    padding-bottom: 90px;
+  }
+
+  @media (max-width: 560px) {
+    .page { padding: var(--space-2xl); }
+    .headline { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="page">
+    <div class="container">
+
+      <div class="eyebrow">Prueba técnica — UX Designer, Especialista en Design System</div>
+      <h1 class="headline">Diseñar confianza. Escalar experiencias.</h1>
+      <div class="subline">Fabio Rodríguez — Design System para Credibanco, 2026</div>
+
+      <div class="links">
+
+        <a href="slide-01-apertura.html" class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18"/><path d="M7 12h4"/></svg>
+          </div>
+          <div>
+            <div class="link-title">Presentación</div>
+            <div class="link-desc">El proceso completo: del diagnóstico a la gobernanza del sistema.</div>
+          </div>
+          <div class="card-trailing">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+        </a>
+
+        <a href="https://docs.google.com/spreadsheets/d/1aC8qiEJlwIBDOC_UkLQw8plmaOiImQoFk013nnYa4zQ/edit?usp=sharing" target="_blank" class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+          </div>
+          <div>
+            <div class="link-title">Diagnóstico</div>
+            <div class="link-desc">30 hallazgos priorizados de la auditoría en Login, Registro y Ayuda.</div>
+          </div>
+          <div class="card-trailing">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+        </a>
+
+        <a href="https://www.figma.com/design/84wwrixT3wzTcs2A91SokA/Credibanco---Design-System-MVP?node-id=0-1&t=VgmTfXtJFBPWLcQI-1" target="_blank" class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
+          </div>
+          <div>
+            <div class="link-title">Figma — MVP</div>
+            <div class="link-desc">Foundations, componentes y las 3 pantallas rediseñadas.</div>
+          </div>
+          <div class="card-trailing">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div></div>
+  </nav>
+
+</body>
+</html>

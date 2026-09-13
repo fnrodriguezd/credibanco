@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>06 — Definir</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+
+              .headline {
+    margin-bottom: var(--space-sm);
+  }
+
+
+  .intro {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 70ch;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: var(--space-2xl);
+  }
+
+  .category {
+    padding: 0 var(--space-xl);
+    border-left: 1px solid var(--border-default);
+  }
+
+  .category:nth-child(2n+1) {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .category:nth-child(n+3) {
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--border-default);
+  }
+
+  .category-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--action-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-lg);
+  }
+
+  .finding {
+    margin-bottom: var(--space-xl);
+  }
+
+  .finding-head {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-xs);
+  }
+
+  .finding-num {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .finding-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .finding-desc {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  .applied-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--action-primary);
+    margin-top: var(--space-sm);
+  }
+
+  .applied-tag svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  @media (max-width: 1000px) {
+        .headline { font-size: 24px; }
+    .categories { grid-template-columns: 1fr; row-gap: var(--space-xl); }
+    .category { border-left: none; padding-left: 0; }
+    .category:nth-child(n+2) { border-top: 1px solid var(--border-default); padding-top: var(--space-lg); }
+  }
+
+  /* ---------- Deck navigation ---------- */
+                          </style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="stage">
+
+      <div class="eyebrow">06 — Definir</div>
+      <h1 class="headline">Los problemas sistémicos</h1>
+      <p class="intro">Los hallazgos se repiten entre las tres pantallas. Al agruparlos por causa, aparecen ocho oportunidades que requieren una respuesta desde el sistema.</p>
+
+      <div class="categories">
+
+        <div class="category">
+          <div class="category-name">Foundations</div>
+          <div class="finding">
+            <div class="finding-head">
+              <span class="finding-num">01</span>
+              <span class="finding-title">Lenguaje visual</span>
+            </div>
+            <div class="finding-desc">Tipografía, jerarquía, escala, espaciado, radios e iconografía sin reglas consistentes.</div>
+          </div>
+          <div class="finding">
+            <div class="finding-head">
+              <span class="finding-num">02</span>
+              <span class="finding-title">Color semántico</span>
+            </div>
+            <div class="finding-desc">El color no comunica de forma consistente interacción, información y estados.</div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="category-name">Components</div>
+          <div class="finding">
+            <div class="finding-head">
+              <span class="finding-num">03</span>
+              <span class="finding-title">Botones</span>
+            </div>
+            <div class="finding-desc">Variantes, jerarquía, estados y comportamientos sin un modelo común.</div>
+          </div>
+          <div class="finding">
+            <div class="finding-head">
+              <span class="finding-num">04</span>
+              <span class="finding-title">Formularios</span>
+            </div>
+            <div class="finding-desc">Inputs, affordance, validación y estructura del formulario sin un patrón común.</div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="category-name">Patterns</div>
+          <div class="finding">
+            <div class="finding-head">
+              <span class="finding-num">05</span>
+              <span class="finding-title">Estados y feedback</span>
+            </div>
+            <div class="finding-desc">La interfaz no comunica de forma consistente cambios, errores y respuestas.</div>
+          </div>
+          <div class="finding">
+            <div class="finding-head">
+              <span class="finding-num">06</span>
+              <span class="finding-title">Navegación y flujos</span>
+            </div>
+            <div class="finding-desc">Acciones, transiciones y estructuras de navegación sin patrones consistentes.</div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="category-name">Transversales</div>
+          <div class="finding">
+            <div class="finding-head">
+              <span class="finding-num">07</span>
+              <span class="finding-title">Contenido y tono</span>
+            </div>
+            <div class="finding-desc">CTAs, instrucciones y mensajes sin criterios compartidos.</div>
+            <div class="applied-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Criterio aplicado en el MVP
+            </div>
+          </div>
+          <div class="finding">
+            <div class="finding-head">
+              <span class="finding-num">08</span>
+              <span class="finding-title">Accesibilidad</span>
+            </div>
+            <div class="finding-desc">Sin integración como criterio transversal de calidad.</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-05-la-priorizacion.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a href="slide-07-la-respuesta.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>09 — El MVP</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+
+              .headline {
+    margin-bottom: var(--space-sm);
+  }
+
+
+  .intro {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 70ch;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .components {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .comp-col {
+    padding: 0 var(--space-xl);
+    border-left: 1px solid var(--border-default);
+  }
+
+  .comp-col:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .comp-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+  }
+
+  /* ---------- Live mini demos ---------- */
+  .demo {
+    background: #FAFAFA;
+    border-radius: var(--radius-md);
+    padding: var(--space-2xl) var(--space-lg);
+    margin-bottom: var(--space-xl);
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Button demo */
+  .demo-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;
+    align-items: center;
+  }
+
+  .mini-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    width: fit-content;
+  }
+
+  .mini-btn.primary { background: var(--action-primary); color: var(--text-on-action); }
+  .mini-btn.secondary { background: transparent; border: 1.5px solid var(--action-primary); color: var(--action-primary); }
+  .mini-btn.disabled { background: var(--action-disabled); color: var(--text-disabled); }
+
+  /* Input demo */
+  .demo-input {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .mini-label {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .mini-field {
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    background: #FFFFFF;
+  }
+
+  .mini-field::placeholder {
+    color: var(--text-secondary);
+  }
+
+  .mini-field:focus {
+    border-color: var(--action-primary);
+  }
+
+  .mini-field.error {
+    border-color: var(--feedback-error);
+  }
+
+  .field-wrap {
+    position: relative;
+  }
+
+  .field-group {
+    margin-bottom: var(--space-xl);
+  }
+
+  .field-wrap .mini-field {
+    padding-right: 44px;
+  }
+
+  .eye-toggle {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .eye-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .eye-toggle .eye-off { display: none; }
+  .eye-toggle.showing .eye { display: none; }
+  .eye-toggle.showing .eye-off { display: block; }
+
+  .mini-helper {
+    font-size: 12px;
+    color: var(--feedback-error);
+  }
+
+  /* Card demo */
+  .mini-card {
+    background: #FFFFFF;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.16);
+    padding: var(--space-lg);
+    display: grid;
+    grid-template-columns: 24px 1fr 28px;
+    gap: var(--space-md);
+    align-items: center;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .mini-card-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+  }
+
+  .mini-card-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .mini-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .mini-card-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .mini-card-chevron {
+    color: var(--action-primary);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mini-card-chevron svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ---------- Spec list ---------- */
+  .specs {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  .specs strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* ---------- Closing note ---------- */
+  .closing {
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--border-default);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  .closing-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    max-width: 70ch;
+    font-weight: 500;
+  }
+
+  .closing-figma {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--action-primary);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .closing-figma:hover {
+    opacity: 0.75;
+  }
+
+  @media (max-width: 900px) {
+        .headline { font-size: 24px; }
+    .components { grid-template-columns: 1fr; row-gap: var(--space-2xl); }
+    .comp-col { border-left: none; padding-left: 0; }
+    .closing { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Deck navigation ---------- */
+                          </style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="stage">
+
+      <div class="eyebrow">09 — El MVP</div>
+      <h1 class="headline">Tres componentes para empezar</h1>
+      <p class="intro">El MVP concentra los componentes que más se repiten y que tienen mayor impacto en la experiencia.</p>
+
+      <div class="components">
+
+        <div class="comp-col">
+          <div class="comp-name">Button</div>
+          <div class="demo">
+            <div class="demo-buttons">
+              <div class="mini-btn primary">Continuar</div>
+              <div class="mini-btn secondary">Cancelar</div>
+              <div class="mini-btn disabled">Continuar</div>
+            </div>
+          </div>
+          <div class="specs">
+            <strong>3 tipos</strong> (Primary, Secondary, Tertiary) · <strong>2 tamaños</strong> · Estados con contraste verificado (incl. Disabled ajustado a WCAG AA) · Auto Layout · Variables · Naming escalable
+          </div>
+        </div>
+
+        <div class="comp-col">
+          <div class="comp-name">Input</div>
+          <div class="demo">
+            <div class="demo-input">
+              <div class="field-group">
+                <div class="mini-label">Contraseña</div>
+                <div class="field-wrap">
+                  <input type="password" class="mini-field" id="demo-password" placeholder="Ingresa tu contraseña">
+                  <button type="button" class="eye-toggle" onclick="togglePassword(this)">
+                    <svg class="eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg class="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a18.6 18.6 0 0 1 4.22-5.06M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 7 11 7a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="mini-label">Número de documento</div>
+              <input type="text" class="mini-field error" value="1098765432">
+              <div class="mini-helper">El número de documento no puede quedar vacío.</div>
+            </div>
+          </div>
+          <div class="specs">
+            <strong>5 estados</strong> (Default, Focus, Filled, Error, Disabled) · Affordance completa en los 4 bordes · Mensajes de error accionables, sin lenguaje técnico · Ícono de visibilidad de contraseña con estado visual propio · Variables
+          </div>
+        </div>
+
+        <div class="comp-col">
+          <div class="comp-name">Card</div>
+          <div class="demo">
+            <div class="mini-card">
+              <div class="mini-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div>
+                <div class="mini-card-title">Centro de ayuda</div>
+                <div class="mini-card-desc">Guías y respuestas paso a paso</div>
+              </div>
+              <div class="mini-card-chevron">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="specs">
+            Componente basado en <strong>slots</strong>, reutilizable en <strong>3 contextos</strong> del producto (navegación, selección única, selección múltiple, acción con CTA) · 4 tipos de trailing element · Elevación en vez de borde, para diferenciarlo semánticamente de una lista de opciones · Variables
+          </div>
+        </div>
+
+      </div>
+
+      <div class="closing">
+        <div class="closing-text">El MVP establece las primeras reglas reutilizables del sistema, con decisiones de accesibilidad, semántica y tono de contenido verificadas, no solo estéticas.</div>
+        <a href="https://www.figma.com/design/84wwrixT3wzTcs2A91SokA/Credibanco---Design-System-MVP?node-id=0-1&t=VgmTfXtJFBPWLcQI-1" target="_blank" class="closing-figma">Ver en Figma — construcción y documentación detallada →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-08-la-arquitectura.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a href="slide-10-el-resultado-aplicado.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    function togglePassword(btn) {
+      var input = document.getElementById('demo-password');
+      var showing = btn.classList.toggle('showing');
+      input.type = showing ? 'text' : 'password';
+    }
+
+    document.addEventListener('keydown', function (e) {
+      var tag = document.activeElement.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

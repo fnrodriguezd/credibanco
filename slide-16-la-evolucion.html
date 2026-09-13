@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>16 — La evolución</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+
+              .headline {
+    margin-bottom: var(--space-3xl);
+  }
+
+
+  /* ---------- Gantt timeline ---------- */
+  .gantt {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .gantt-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .gantt-phase-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .gantt-phase-range {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .gantt-track {
+    position: relative;
+    height: 34px;
+    background: #FAFAFA;
+    border-radius: var(--radius-sm);
+  }
+
+  .gantt-bar {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: var(--action-primary);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-md);
+  }
+
+  .gantt-bar-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFFFFF;
+    white-space: nowrap;
+  }
+
+  .gantt-axis {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .gantt-axis-ticks {
+    position: relative;
+    height: 20px;
+  }
+
+  .tick {
+    position: absolute;
+    top: 0;
+    font-size: 11px;
+    color: var(--text-secondary);
+    transform: translateX(-50%);
+  }
+
+  .tick::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    width: 1px;
+    height: 6px;
+    background: var(--border-default);
+  }
+
+  .deliverables {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+
+  .deliverables-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ---------- IA note + closing flow ---------- */
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: start;
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--border-default);
+    margin-top: var(--space-xl);
+  }
+
+  .ia-card {
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    padding: var(--space-lg);
+  }
+
+  .ia-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--action-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .ia-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .flow-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+    height: 100%;
+    align-content: center;
+  }
+
+  .flow-summary .fs-step {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .flow-summary .fs-arrow {
+    color: var(--action-primary);
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+        .headline { font-size: 24px; }
+    .gantt-row, .gantt-axis, .deliverables { grid-template-columns: 1fr; gap: var(--space-xs); }
+    .bottom-grid { grid-template-columns: 1fr; gap: var(--space-2xl); }
+  }
+
+  /* ---------- Deck navigation ---------- */
+                          </style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="stage">
+
+      <div class="eyebrow">16 — La evolución</div>
+      <h1 class="headline">Roadmap</h1>
+
+      <div class="gantt">
+        <div class="gantt-row">
+          <div>
+            <div class="gantt-phase-name">Fundamentos</div>
+            <div class="gantt-phase-range">0–3 meses</div>
+          </div>
+          <div class="gantt-track">
+            <div class="gantt-bar" style="left: 0%; width: 25%;">
+              <span class="gantt-bar-label">0–3 m</span>
+            </div>
+          </div>
+        </div>
+        <div class="deliverables">
+          <div></div>
+          <div class="deliverables-text">Auditoría · Foundations · Tokens · Componentes prioritarios · Accesibilidad</div>
+        </div>
+
+        <div class="gantt-row">
+          <div>
+            <div class="gantt-phase-name">Adopción</div>
+            <div class="gantt-phase-range">3–6 meses</div>
+          </div>
+          <div class="gantt-track">
+            <div class="gantt-bar" style="left: 25%; width: 25%; opacity: 0.75;">
+              <span class="gantt-bar-label">3–6 m</span>
+            </div>
+          </div>
+        </div>
+        <div class="deliverables">
+          <div></div>
+          <div class="deliverables-text">Patterns · Integración con Desarrollo · Documentación · Capacitación · Gobernanza</div>
+        </div>
+
+        <div class="gantt-row">
+          <div>
+            <div class="gantt-phase-name">Escala</div>
+            <div class="gantt-phase-range">6–12 meses</div>
+          </div>
+          <div class="gantt-track">
+            <div class="gantt-bar" style="left: 50%; width: 50%; opacity: 0.55;">
+              <span class="gantt-bar-label">6–12 m</span>
+            </div>
+          </div>
+        </div>
+        <div class="deliverables">
+          <div></div>
+          <div class="deliverables-text">Nuevos productos y marcas · Métricas · Contribución · Deprecación · Evolución</div>
+        </div>
+
+        <div class="gantt-axis">
+          <div></div>
+          <div class="gantt-axis-ticks">
+            <span class="tick" style="left: 0%;">0</span>
+            <span class="tick" style="left: 25%;">3</span>
+            <span class="tick" style="left: 50%;">6</span>
+            <span class="tick" style="left: 100%;">12 meses</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-grid">
+        <div class="ia-card">
+          <div class="ia-label">IA</div>
+          <div class="ia-text">La IA acelera la creación de interfaces. El Design System aporta las reglas, componentes y contexto para mantener consistencia y calidad.</div>
+        </div>
+
+        <div class="flow-summary">
+          <span class="fs-step">Priorizar</span>
+          <span class="fs-arrow">→</span>
+          <span class="fs-step">Construir</span>
+          <span class="fs-arrow">→</span>
+          <span class="fs-step">Adoptar</span>
+          <span class="fs-arrow">→</span>
+          <span class="fs-step">Medir</span>
+          <span class="fs-arrow">→</span>
+          <span class="fs-step">Evolucionar</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-15-la-medicion.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a href="slide-17-cierre.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      var tag = document.activeElement.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>05 — La priorización</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+
+  .stage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: start;
+  }
+
+            /* ---------- Left ---------- */
+    .headline {
+    margin-bottom: var(--space-2xl);
+    max-width: 420px;
+  }
+
+
+  .criteria {
+    border-top: 1px solid var(--border-default);
+  }
+
+  .criterion {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .criterion-marker {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-sm);
+    background: var(--action-primary);
+    margin-top: 8px;
+  }
+
+  .criterion-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+  }
+
+  .criterion-desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 38ch;
+  }
+
+  /* ---------- Right ---------- */
+  .result-heading {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-xl);
+  }
+
+  .tier {
+    display: grid;
+    grid-template-columns: 4px 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .tier-bar {
+    border-radius: var(--radius-sm);
+  }
+
+  .tier.alta .tier-bar { background: var(--action-primary); }
+  .tier.media .tier-bar { background: rgba(0, 106, 102, 0.5); }
+  .tier.baja .tier-bar { background: rgba(0, 106, 102, 0.22); }
+
+  .tier-label {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+  }
+
+  .tier.alta .tier-label { color: var(--text-primary); }
+  .tier.media .tier-label { color: var(--text-primary); }
+  .tier.baja .tier-label { color: var(--text-secondary); }
+
+  .tier-items {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .tier.alta .tier-items { color: var(--text-primary); font-weight: 500; }
+  .tier.media .tier-items { color: var(--text-secondary); }
+  .tier.baja .tier-items { color: var(--text-secondary); }
+
+  @media (max-width: 900px) {
+            .headline { font-size: 26px; }
+  }
+
+  /* ---------- Deck navigation ---------- */
+                          </style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="stage">
+
+      <div class="left">
+        <div class="eyebrow">05 — La priorización</div>
+        <h1 class="headline">Criterios de impacto y alcance</h1>
+
+        <div class="criteria">
+          <div class="criterion">
+            <div class="criterion-marker"></div>
+            <div>
+              <div class="criterion-title">Impacto</div>
+              <div class="criterion-desc">Afecta la tarea, la comprensión, la confianza o la accesibilidad.</div>
+            </div>
+          </div>
+          <div class="criterion">
+            <div class="criterion-marker"></div>
+            <div>
+              <div class="criterion-title">Frecuencia</div>
+              <div class="criterion-desc">Se repite en diferentes pantallas o productos.</div>
+            </div>
+          </div>
+          <div class="criterion">
+            <div class="criterion-marker"></div>
+            <div>
+              <div class="criterion-title">Alcance</div>
+              <div class="criterion-desc">Afecta una pantalla, un componente o varios productos.</div>
+            </div>
+          </div>
+          <div class="criterion">
+            <div class="criterion-marker"></div>
+            <div>
+              <div class="criterion-title">Esfuerzo</div>
+              <div class="criterion-desc">Define la complejidad de implementar y mantener la solución.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="result-heading">Resultado de la priorización</div>
+
+        <div class="tier alta">
+          <div class="tier-bar"></div>
+          <div>
+            <div class="tier-label">Alta prioridad</div>
+            <div class="tier-items">Botones · Formularios · Estados y feedback · Accesibilidad</div>
+          </div>
+        </div>
+
+        <div class="tier media">
+          <div class="tier-bar"></div>
+          <div>
+            <div class="tier-label">Media prioridad</div>
+            <div class="tier-items">Navegación y flujos · Contenido y tono</div>
+          </div>
+        </div>
+
+        <div class="tier baja">
+          <div class="tier-bar"></div>
+          <div>
+            <div class="tier-label">Baja prioridad</div>
+            <div class="tier-items">Elementos visuales puntuales · Ilustración · Ajustes de contenido específicos</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-04-el-analisis.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a href="slide-06-definir.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

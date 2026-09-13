@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>12 — La gobernanza</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+
+    .headline {
+    margin-bottom: var(--space-sm);
+  }
+
+
+  .intro {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 70ch;
+    margin-bottom: var(--space-3xl);
+  }
+
+  /* ---------- Process flow ---------- */
+  .process {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .step {
+    padding: 0 var(--space-lg);
+    border-left: 1px solid var(--border-default);
+  }
+
+  .step:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .step-num {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    background: var(--action-primary);
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .step-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+  }
+
+  .step-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  /* ---------- Lower section: FAQ + PR card ---------- */
+  .lower-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: var(--space-4xl);
+    align-items: start;
+  }
+
+  .pr-card {
+    background: #F6F8FA;
+    border: 1px solid #D0D7DE;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .pr-header {
+    background: #FFFFFF;
+    padding: var(--space-md);
+    border-bottom: 1px solid #D0D7DE;
+  }
+
+  .pr-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1F2328;
+    margin-bottom: var(--space-sm);
+    line-height: 1.4;
+  }
+
+  .pr-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #8250DF;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+
+  .pr-status svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .pr-body {
+    padding: var(--space-md);
+  }
+
+  .pr-check {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 5px 0;
+  }
+
+  .pr-check-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #1A7F37;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .pr-check-icon svg {
+    width: 10px;
+    height: 10px;
+    color: #FFFFFF;
+  }
+
+  .pr-check-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1F2328;
+  }
+
+  .pr-check-status {
+    font-size: 11px;
+    color: #59636E;
+    margin-left: auto;
+  }
+
+  .pr-footer {
+    background: #FFFFFF;
+    padding: var(--space-sm) var(--space-md);
+    border-top: 1px solid #D0D7DE;
+    font-size: 11px;
+    color: #59636E;
+  }
+
+  .pr-footer strong {
+    color: #1F2328;
+    font-weight: 600;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-lg);
+  }
+
+  .faq {
+    border-top: 1px solid var(--border-default);
+  }
+
+  .faq-item {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: var(--space-xl);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .faq-q {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .faq-a {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 60ch;
+  }
+
+  .faq-a strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+        .headline { font-size: 24px; }
+    .lower-grid { grid-template-columns: 1fr; gap: var(--space-2xl); }
+    .process { grid-template-columns: 1fr 1fr; row-gap: var(--space-xl); }
+    .step:nth-child(3) { border-left: none; padding-left: 0; }
+    .faq-item { grid-template-columns: 1fr; gap: var(--space-xs); }
+  }
+
+  /* ---------- Deck navigation ---------- */
+                          </style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="stage">
+
+      <div class="eyebrow">12 — La gobernanza</div>
+      <h1 class="headline">Reglas claras para evolucionar el sistema</h1>
+      <p class="intro">El Design System necesita un proceso definido para incorporar cambios, resolver excepciones y mantener sus componentes.</p>
+
+      <div class="process">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-name">Proponer</div>
+          <div class="step-desc">Cualquier equipo puede plantear una necesidad o mejora.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-name">Revisar</div>
+          <div class="step-desc">Diseño y Desarrollo evalúan impacto, accesibilidad, reutilización y viabilidad técnica.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-name">Aprobar</div>
+          <div class="step-desc">Se decide si entra al sistema, requiere ajustes o se resuelve como excepción.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-name">Versionar</div>
+          <div class="step-desc">Los cambios se documentan y se comunican según su impacto.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-name">Adoptar</div>
+          <div class="step-desc">Los equipos reciben la actualización con documentación para implementarla.</div>
+        </div>
+      </div>
+
+      <div class="lower-grid">
+        <div class="faq-col">
+          <div class="faq-label">Preguntas de gobierno</div>
+          <div class="faq">
+            <div class="faq-item">
+              <div class="faq-q">¿Quién decide?</div>
+              <div class="faq-a">Diseño · Desarrollo · Negocio</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q">¿Qué pasa con una excepción?</div>
+              <div class="faq-a">Se documenta, se evalúa y se revisa si debe convertirse en una solución del sistema.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q">¿Qué pasa con un componente obsoleto?</div>
+              <div class="faq-a">Se marca, se comunica y se define su reemplazo.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q">¿Cómo decides qué componente deprecar?</div>
+              <div class="faq-a">Se mide con cuatro señales: <strong>uso real</strong> en Figma y código, <strong>redundancia</strong> con otro componente, <strong>costo de mantenimiento</strong> frente al valor que aporta, y existencia de un <strong>reemplazo viable</strong>. Cumplir dos o más señales activa el periodo de gracia antes de deprecar.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-col">
+          <div class="pr-card">
+            <div class="pr-header">
+              <div class="pr-title">Agregar componente: Radio Button</div>
+              <div class="pr-status">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
+                Fusionado
+              </div>
+            </div>
+            <div class="pr-body">
+              <div class="pr-check">
+                <div class="pr-check-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <div class="pr-check-name">Diseño</div>
+                <div class="pr-check-status">Aprobado</div>
+              </div>
+              <div class="pr-check">
+                <div class="pr-check-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <div class="pr-check-name">Desarrollo</div>
+                <div class="pr-check-status">Aprobado</div>
+              </div>
+              <div class="pr-check">
+                <div class="pr-check-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <div class="pr-check-name">Negocio</div>
+                <div class="pr-check-status">Aprobado</div>
+              </div>
+            </div>
+            <div class="pr-footer">
+              <strong>v1.3.0</strong> · 3 de 3 equipos
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-11-la-implementacion.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a href="slide-13-colaboracion-desarrollo.html" class="nav-btn primary" title="Siguiente" id="nav-next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      var tag = document.activeElement.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight') {
+        var next = document.getElementById('nav-next');
+        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
+      }
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>

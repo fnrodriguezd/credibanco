@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>17 — Cierre</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --action-primary: #006A66;
+    --brand-teal: #00AEA9;
+    --brand-amber: #FCB600;
+    --brand-black: #000000;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5C5C5C;
+    --border-default: #B0B0B0;
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
+    --space-2xl: 32px;
+    --space-3xl: 48px;
+    --space-4xl: 64px;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-4xl) 96px;
+    position: relative;
+  }
+
+  .content {
+    max-width: 720px;
+    width: 100%;
+  }
+
+  .eyebrow {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--action-primary);
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .headline {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .accent-bar {
+    width: 64px;
+    height: 4px;
+    background: var(--action-primary);
+    border-radius: var(--radius-sm);
+    margin: var(--space-xl) 0;
+  }
+
+  .subheadline {
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-3xl);
+    max-width: 55ch;
+  }
+
+  /* ---------- Quick links ---------- */
+  .quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .quick-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--action-primary);
+    text-decoration: none;
+    padding: 12px 16px;
+    border: 1.5px solid var(--action-primary);
+    border-radius: var(--radius-md);
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .quick-link:hover {
+    background: rgba(0, 106, 102, 0.08);
+  }
+
+  .quick-link svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .meta .divider {
+    width: 1px;
+    height: 12px;
+    background: var(--border-default);
+  }
+
+  .meta .author {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .swatches {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-3xl);
+  }
+
+  .swatch {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-sm);
+  }
+
+  .swatch.black { background: var(--brand-black); }
+  .swatch.teal { background: var(--brand-teal); }
+  .swatch.amber { background: var(--brand-amber); }
+  .swatch.action { background: var(--action-primary); }
+
+  @media (max-width: 720px) {
+    .slide { padding: var(--space-2xl); padding-bottom: 100px; }
+    .headline { font-size: 32px; }
+    .subheadline { font-size: 16px; }
+  }
+
+  /* ---------- Deck navigation ---------- */
+  .deck-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-xl);
+    background: #FFFFFF;
+    border-top: 1px solid var(--border-default);
+  }
+
+  .nav-personal {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .nav-personal a {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+
+  .nav-personal a:hover {
+    color: var(--action-primary);
+  }
+
+  .nav-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid var(--border-default);
+    background: #FFFFFF;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .nav-btn:hover {
+    border-color: var(--action-primary);
+    color: var(--action-primary);
+  }
+
+  .nav-btn.accent {
+    border-color: var(--action-primary);
+    color: var(--action-primary);
+  }
+
+  .nav-btn.accent:hover {
+    background: var(--action-primary);
+    color: #FFFFFF;
+  }
+
+  .nav-btn.primary {
+    background: var(--action-primary);
+    border-color: var(--action-primary);
+    color: #FFFFFF;
+  }
+
+  .nav-btn.primary:hover {
+    opacity: 0.85;
+    color: #FFFFFF;
+  }
+
+  .nav-btn.disabled {
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  .nav-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="content">
+      <div class="eyebrow">17 — Cierre</div>
+      <h1 class="headline">Diseñar confianza.<br>Escalar experiencias.</h1>
+      <div class="accent-bar"></div>
+      <p class="subheadline">Un Design System permite construir experiencias consistentes, accesibles y confiables a escala.</p>
+
+      <div class="quick-links">
+        <a href="https://docs.google.com/spreadsheets/d/1aC8qiEJlwIBDOC_UkLQw8plmaOiImQoFk013nnYa4zQ/edit?usp=sharing" target="_blank" class="quick-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+          Ver diagnóstico
+        </a>
+        <a href="https://www.figma.com/design/84wwrixT3wzTcs2A91SokA/Credibanco---Design-System-MVP?node-id=0-1&t=VgmTfXtJFBPWLcQI-1" target="_blank" class="quick-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
+          Ver Figma — MVP
+        </a>
+      </div>
+
+      <div class="meta">
+        <span class="author">Fabio Rodríguez</span>
+        <span>·</span>
+        <span>Design System para Credibanco</span>
+        <div class="divider"></div>
+        <span>2026</span>
+      </div>
+
+      <div class="swatches">
+        <div class="swatch black"></div>
+        <div class="swatch teal"></div>
+        <div class="swatch amber"></div>
+        <div class="swatch action"></div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="deck-nav">
+    <div class="nav-personal">
+      <a href="https://fnrodriguezd.github.io/" target="_blank">Portafolio</a>
+      <a href="https://www.linkedin.com/in/fnrodriguezd/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="nav-group">
+      <a href="slide-00-inicio.html" class="nav-btn accent" title="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <a href="slide-16-la-evolucion.html" class="nav-btn" title="Atrás" id="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <span class="nav-btn disabled" title="Fin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      var tag = document.activeElement.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === 'ArrowLeft') {
+        var back = document.getElementById('nav-back');
+        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
+      }
+    });
+  </script>
+
+</body>
+</html>
