@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>06 — Definir</title>
 <link rel="stylesheet" href="deck.css">
 <style>
@@ -18,6 +19,47 @@
     max-width: 70ch;
     margin-bottom: var(--space-2xl);
   }
+
+  /* ---------- Cluster canvas: 30 hallazgos → 8 causas ---------- */
+  .cluster-canvas {
+    position: relative;
+    height: 70px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .cluster-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transition: top 1.1s cubic-bezier(0.34, 1.2, 0.4, 1), left 1.1s cubic-bezier(0.34, 1.2, 0.4, 1);
+  }
+
+  .cd-1 { background: var(--action-primary); }
+  .cd-2 { background: var(--brand-teal); }
+  .cd-3 { background: var(--brand-amber); }
+  .cd-4 { background: var(--brand-black); }
+
+  /* Posiciones iniciales dispersas */
+  .cluster-dot:nth-of-type(1) { top: 15%; left: 78%; }
+  .cluster-dot:nth-of-type(2) { top: 65%; left: 12%; }
+  .cluster-dot:nth-of-type(3) { top: 80%; left: 55%; }
+  .cluster-dot:nth-of-type(4) { top: 10%; left: 92%; }
+  .cluster-dot:nth-of-type(5) { top: 40%; left: 4%; }
+  .cluster-dot:nth-of-type(6) { top: 5%; left: 42%; }
+  .cluster-dot:nth-of-type(7) { top: 70%; left: 85%; }
+  .cluster-dot:nth-of-type(8) { top: 30%; left: 22%; }
+
+  .cluster-canvas.gathered .cluster-dot { top: 50%; }
+
+  .cluster-canvas.gathered .cluster-dot:nth-of-type(1) { left: 10%; }
+  .cluster-canvas.gathered .cluster-dot:nth-of-type(2) { left: 15%; }
+  .cluster-canvas.gathered .cluster-dot:nth-of-type(3) { left: 35%; }
+  .cluster-canvas.gathered .cluster-dot:nth-of-type(4) { left: 40%; }
+  .cluster-canvas.gathered .cluster-dot:nth-of-type(5) { left: 60%; }
+  .cluster-canvas.gathered .cluster-dot:nth-of-type(6) { left: 65%; }
+  .cluster-canvas.gathered .cluster-dot:nth-of-type(7) { left: 85%; }
+  .cluster-canvas.gathered .cluster-dot:nth-of-type(8) { left: 90%; }
 
   .categories {
     display: grid;
@@ -94,9 +136,10 @@
   }
 
   @media (max-width: 1000px) {
-        .headline { font-size: 24px; }
+    .slide { padding: var(--space-2xl); padding-bottom: 100px; }
+    .headline { font-size: 24px; }
     .categories { grid-template-columns: 1fr; row-gap: var(--space-xl); }
-    .category { border-left: none; padding-left: 0; }
+    .category { border-left: none; padding: 0; }
     .category:nth-child(n+2) { border-top: 1px solid var(--border-default); padding-top: var(--space-lg); }
   }
 
@@ -111,6 +154,17 @@
       <div class="eyebrow">06 — Definir</div>
       <h1 class="headline">Los problemas sistémicos</h1>
       <p class="intro">Los hallazgos se repiten entre las tres pantallas. Al agruparlos por causa, aparecen ocho oportunidades que requieren una respuesta desde el sistema.</p>
+
+      <div class="cluster-canvas" id="clusterCanvas">
+        <div class="cluster-dot cd-1"></div>
+        <div class="cluster-dot cd-1"></div>
+        <div class="cluster-dot cd-2"></div>
+        <div class="cluster-dot cd-2"></div>
+        <div class="cluster-dot cd-3"></div>
+        <div class="cluster-dot cd-3"></div>
+        <div class="cluster-dot cd-4"></div>
+        <div class="cluster-dot cd-4"></div>
+      </div>
 
       <div class="categories">
 
@@ -214,17 +268,14 @@
   </nav>
 
   <script>
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') {
-        var next = document.getElementById('nav-next');
-        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
-      }
-      if (e.key === 'ArrowLeft') {
-        var back = document.getElementById('nav-back');
-        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
-      }
+    window.addEventListener('DOMContentLoaded', function () {
+      setTimeout(function () {
+        var canvas = document.getElementById('clusterCanvas');
+        if (canvas) canvas.classList.add('gathered');
+      }, 500);
     });
   </script>
+  <script src="deck.js"></script>
 
 </body>
 </html>

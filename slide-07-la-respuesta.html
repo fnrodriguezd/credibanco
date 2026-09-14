@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>07 — La respuesta</title>
 <link rel="stylesheet" href="deck.css">
 <style>
@@ -95,7 +96,8 @@
   }
 
   @media (max-width: 900px) {
-        .eq-term, .eq-part { font-size: 26px; }
+    .slide { padding: var(--space-2xl); padding-bottom: 100px; }
+    .eq-term, .eq-part { font-size: 26px; }
     .eq-symbol { font-size: 20px; }
     .pillar, .result { grid-template-columns: 1fr; gap: var(--space-xs); }
   }
@@ -163,18 +165,7 @@
     </div>
   </nav>
 
-  <script>
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') {
-        var next = document.getElementById('nav-next');
-        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
-      }
-      if (e.key === 'ArrowLeft') {
-        var back = document.getElementById('nav-back');
-        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
-      }
-    });
-  </script>
+  <script src="deck.js"></script>
 
 </body>
 </html>

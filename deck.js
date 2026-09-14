@@ -2,12 +2,26 @@
 // Teclado (flechas izquierda/derecha) + swipe táctil (deslizar izq/der)
 
 (function () {
+  // Encuentra el contenedor de contenido (no el body, para no romper
+  // el position:fixed de la barra de navegación al aplicarle transform).
+  function getContentEl() {
+    var children = document.body.children;
+    for (var i = 0; i < children.length; i++) {
+      var tag = children[i].tagName;
+      if (tag !== 'NAV' && tag !== 'SCRIPT') {
+        return children[i];
+      }
+    }
+    return document.body;
+  }
+
+  var content = getContentEl();
+
   // ---------- Entrada suave al cargar ----------
-  document.body.style.opacity = '0';
-  document.body.style.transform = 'translateX(0)';
+  content.style.opacity = '0';
   window.requestAnimationFrame(function () {
-    document.body.style.transition = 'opacity 0.25s ease';
-    document.body.style.opacity = '1';
+    content.style.transition = 'opacity 0.25s ease';
+    content.style.opacity = '1';
   });
 
   function goTo(id) {
@@ -21,9 +35,9 @@
     var el = document.getElementById(id);
     if (!el || el.tagName !== 'A') return;
     var href = el.getAttribute('href');
-    document.body.style.transition = 'transform 0.22s ease, opacity 0.22s ease';
-    document.body.style.transform = direction === 'left' ? 'translateX(-32px)' : 'translateX(32px)';
-    document.body.style.opacity = '0';
+    content.style.transition = 'transform 0.22s ease, opacity 0.22s ease';
+    content.style.transform = direction === 'left' ? 'translateX(-32px)' : 'translateX(32px)';
+    content.style.opacity = '0';
     setTimeout(function () {
       window.location.href = href;
     }, 200);

@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>09 — El MVP</title>
 <link rel="stylesheet" href="deck.css">
 <style>
@@ -211,6 +212,33 @@
   }
 
   /* ---------- Spec list ---------- */
+  /* ---------- Toast: invitación a interactuar ---------- */
+  .interact-toast {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    background: rgba(0, 106, 102, 0.08);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-lg);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--action-primary);
+  }
+
+  .interact-toast svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    animation: toast-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes toast-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.18); }
+  }
+
   .specs {
     font-size: 13px;
     line-height: 1.7;
@@ -242,21 +270,28 @@
   }
 
   .closing-figma {
-    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
     font-weight: 600;
+    letter-spacing: 0.01em;
     color: var(--action-primary);
     text-decoration: none;
-    white-space: nowrap;
+    padding: 12px 16px;
+    border: 1.5px solid var(--action-primary);
+    border-radius: var(--radius-md);
+    transition: background 0.15s ease;
   }
 
   .closing-figma:hover {
-    opacity: 0.75;
+    background: rgba(0, 106, 102, 0.08);
   }
 
   @media (max-width: 900px) {
+    .slide { padding: var(--space-2xl); padding-bottom: 100px; }
         .headline { font-size: 24px; }
     .components { grid-template-columns: 1fr; row-gap: var(--space-2xl); }
-    .comp-col { border-left: none; padding-left: 0; }
+    .comp-col { border-left: none; padding: 0; }
     .closing { grid-template-columns: 1fr; }
   }
 
@@ -307,6 +342,12 @@
               <div class="mini-helper">El número de documento no puede quedar vacío.</div>
             </div>
           </div>
+
+          <div class="interact-toast">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11.5V6a2 2 0 0 1 4 0v5.5M13 6a2 2 0 0 1 4 0v6M17 8.5a2 2 0 0 1 4 0v5c0 3.5-2.5 6.5-6 6.5h-2c-2 0-3.5-.7-5-2.5l-3-4c-.6-.8-.4-1.8.5-2.3.8-.4 1.6-.2 2.2.5L9 13"/></svg>
+            <span>¡Interactúa con este componente!</span>
+          </div>
+
           <div class="specs">
             <strong>5 estados</strong> (Default, Focus, Filled, Error, Disabled) · Affordance completa en los 4 bordes · Mensajes de error accionables, sin lenguaje técnico · Ícono de visibilidad de contraseña con estado visual propio · Variables
           </div>
@@ -367,20 +408,8 @@
       var showing = btn.classList.toggle('showing');
       input.type = showing ? 'text' : 'password';
     }
-
-    document.addEventListener('keydown', function (e) {
-      var tag = document.activeElement.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-      if (e.key === 'ArrowRight') {
-        var next = document.getElementById('nav-next');
-        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
-      }
-      if (e.key === 'ArrowLeft') {
-        var back = document.getElementById('nav-back');
-        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
-      }
-    });
   </script>
+  <script src="deck.js"></script>
 
 </body>
 </html>

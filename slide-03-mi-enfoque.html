@@ -70,55 +70,42 @@
     color: var(--text-secondary);
   }
 
-  /* ---------- Cycle arrow (loop back to question 1) ---------- */
-  .cycle-wrap {
-    position: relative;
+  /* ---------- Cycle banner (loop icon) ---------- */
+  .cycle-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-xl);
+    background: rgba(0, 106, 102, 0.08);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-2xl);
     margin-bottom: var(--space-2xl);
   }
 
-  .cycle-svg {
-    width: 100%;
-    height: 46px;
-    display: block;
-    overflow: visible;
+  .cycle-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--action-primary);
+    display: flex;
+    animation: spin-pause 3s ease-in-out infinite;
   }
 
-  .cycle-path {
-    fill: none;
-    stroke: var(--action-primary);
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-dasharray: 1300;
-    stroke-dashoffset: 1300;
-    animation: draw-cycle 2s ease-out 1.1s forwards;
+  .cycle-icon svg {
+    width: 20px;
+    height: 20px;
   }
 
-  @keyframes draw-cycle {
-    to { stroke-dashoffset: 0; }
+  @keyframes spin-pause {
+    0% { transform: rotate(0deg); }
+    22% { transform: rotate(360deg); }
+    100% { transform: rotate(360deg); }
   }
 
-  .cycle-arrow {
-    fill: var(--action-primary);
-    opacity: 0;
-    animation: reveal-arrow 0.25s ease-out 3.05s forwards;
-  }
-
-  @keyframes reveal-arrow {
-    to { opacity: 1; }
-  }
-
-  .cycle-label {
-    text-align: center;
-    font-size: 13px;
+  .cycle-text {
+    font-size: 14px;
     font-weight: 600;
-    color: var(--text-secondary);
-    margin-top: var(--space-xs);
-    opacity: 0;
-    animation: fade-in-label 0.5s ease-out 3.2s forwards;
-  }
-
-  @keyframes fade-in-label {
-    to { opacity: 1; }
+    color: var(--action-primary);
   }
 
   /* ---------- Resultado esperado ---------- */
@@ -150,16 +137,16 @@
     .slide { padding: var(--space-2xl); padding-bottom: 100px; }
     .headline { font-size: 28px; }
     .questions { grid-template-columns: 1fr 1fr; row-gap: var(--space-2xl); }
-    .question:nth-child(3) { border-left: none; padding-left: 0; }
+    .question:nth-child(3) { border-left: none; padding: 0; }
     .result { grid-template-columns: 1fr; }
-    .cycle-wrap { display: none; }
   }
 
   @media (max-width: 560px) {
     .questions { grid-template-columns: 1fr; row-gap: var(--space-xl); }
-    .question { border-left: none; padding-left: 0; padding-bottom: var(--space-lg); border-bottom: 1px solid var(--border-default); }
+    .question { border-left: none; padding: 0 0 var(--space-lg) 0; border-bottom: 1px solid var(--border-default); }
     .question:not(:first-child) { padding-left: 0; }
-    .question:last-child { border-bottom: none; }
+    .question:nth-child(3) { padding: 0 0 var(--space-lg) 0; }
+    .question:last-child { border-bottom: none; padding-bottom: 0; }
   }
 
   /* ---------- Deck navigation ---------- */
@@ -197,12 +184,11 @@
         </div>
       </div>
 
-      <div class="cycle-wrap">
-        <svg viewBox="0 0 1160 46" class="cycle-svg" preserveAspectRatio="none">
-          <path class="cycle-path" d="M 1100 6 C 1100 40, 60 40, 60 6" />
-          <polygon class="cycle-arrow" points="60,6 68,14 52,14" />
-        </svg>
-        <div class="cycle-label">El enfoque se repite en cada iteración</div>
+      <div class="cycle-banner">
+        <div class="cycle-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        </div>
+        <div class="cycle-text">El enfoque se repite en cada iteración</div>
       </div>
 
       <div class="result">

@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>05 — La priorización</title>
 <link rel="stylesheet" href="deck.css">
 <style>
@@ -97,8 +98,172 @@
   .tier.media .tier-items { color: var(--text-secondary); }
   .tier.baja .tier-items { color: var(--text-secondary); }
 
+  .quadrant-note {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+  }
+
+  .quadrant-note strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* ---------- Quadrant: Impacto vs. Esfuerzo ---------- */
+  .quadrant-frame {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    grid-template-rows: 1fr 30px;
+    gap: 8px;
+  }
+
+  .qf-yaxis {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) 0;
+  }
+
+  .qf-yaxis span {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .qf-yaxis-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 12px !important;
+    color: var(--text-primary) !important;
+  }
+
+  .qf-spacer {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .qf-xaxis {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--space-sm);
+  }
+
+  .qf-xaxis span {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .qf-xaxis-title {
+    font-size: 12px !important;
+    color: var(--text-primary) !important;
+  }
+
+  .quadrant {
+    grid-column: 2;
+    grid-row: 1;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+    height: 340px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .q-cell {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .q-cell-name {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .q-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-content: flex-start;
+  }
+
+  .q-dot {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #FFFFFF;
+    opacity: 0;
+    transform: scale(0.6);
+    animation: dot-in 0.35s ease-out forwards;
+  }
+
+  @keyframes dot-in {
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Alta prioridad — impacto alto, esfuerzo bajo */
+  .q-alta {
+    background: rgba(0, 106, 102, 0.14);
+  }
+  .q-alta .q-cell-name { color: var(--action-primary); }
+  .q-alta .q-dot { color: var(--action-primary); }
+
+  /* Evaluar — impacto alto, esfuerzo alto */
+  .q-evaluar {
+    background: rgba(252, 182, 0, 0.16);
+  }
+  .q-evaluar .q-cell-name { color: #8a6400; }
+  .q-evaluar .q-dot { color: #8a6400; }
+
+  /* Delegar — impacto bajo, esfuerzo bajo */
+  .q-delegar {
+    background: rgba(0, 174, 169, 0.10);
+  }
+  .q-delegar .q-cell-name { color: var(--action-primary); }
+  .q-delegar .q-dot { color: var(--action-primary); }
+
+  /* Evitar por ahora — impacto bajo, esfuerzo alto */
+  .q-evitar {
+    background: rgba(192, 57, 43, 0.10);
+  }
+  .q-evitar .q-cell-name { color: var(--feedback-error); }
+  .q-evitar .q-dot { color: var(--feedback-error); }
+
+  /* Entrada escalonada de las píldoras */
+  .quadrant .q-dot:nth-child(1) { animation-delay: 0.2s; }
+  .quadrant .q-dot:nth-child(2) { animation-delay: 0.35s; }
+  .quadrant .q-dot:nth-child(3) { animation-delay: 0.5s; }
+  .quadrant .q-dot:nth-child(4) { animation-delay: 0.65s; }
+  .q-evaluar .q-dot:nth-child(1) { animation-delay: 0.8s; }
+  .q-evaluar .q-dot:nth-child(2) { animation-delay: 0.95s; }
+  .q-delegar .q-dot:nth-child(1) { animation-delay: 1.1s; }
+  .q-evitar .q-dot:nth-child(1) { animation-delay: 1.25s; }
+  .q-evitar .q-dot:nth-child(2) { animation-delay: 1.4s; }
+
   @media (max-width: 900px) {
-            .headline { font-size: 26px; }
+    .slide { padding: var(--space-2xl); padding-bottom: 100px; }
+    .stage { grid-template-columns: 1fr; }
+    .headline { font-size: 26px; }
+    .quadrant { height: auto; }
+    .q-cell { min-height: 130px; }
   }
 
   /* ---------- Deck navigation ---------- */
@@ -111,7 +276,7 @@
 
       <div class="left">
         <div class="eyebrow">05 — La priorización</div>
-        <h1 class="headline">Criterios de impacto y alcance</h1>
+        <h1 class="headline">Criterios de priorización</h1>
 
         <div class="criteria">
           <div class="criterion">
@@ -146,29 +311,56 @@
       </div>
 
       <div class="right">
-        <div class="result-heading">Resultado de la priorización</div>
+        <div class="result-heading">Impacto vs. Esfuerzo</div>
+        <p class="quadrant-note">El eje de <strong>Impacto</strong> combina tres señales: qué tan grave es el problema (Impacto), cuántas veces se repite (Frecuencia) y a cuántos productos o pantallas afecta (Alcance). El eje de <strong>Esfuerzo</strong> mide la complejidad de construir y mantener la solución. Cruzar ambos ejes define qué se resuelve primero.</p>
 
-        <div class="tier alta">
-          <div class="tier-bar"></div>
-          <div>
-            <div class="tier-label">Alta prioridad</div>
-            <div class="tier-items">Botones · Formularios · Estados y feedback · Accesibilidad</div>
+        <div class="quadrant-frame">
+          <div class="qf-yaxis">
+            <span>Alto</span>
+            <span class="qf-yaxis-title">Impacto</span>
+            <span>Bajo</span>
           </div>
-        </div>
 
-        <div class="tier media">
-          <div class="tier-bar"></div>
-          <div>
-            <div class="tier-label">Media prioridad</div>
-            <div class="tier-items">Navegación y flujos · Contenido y tono</div>
+          <div class="quadrant">
+            <div class="q-cell q-alta">
+            <div class="q-cell-name">Alta prioridad</div>
+            <div class="q-items">
+              <span class="q-dot">Botones</span>
+              <span class="q-dot">Formularios</span>
+              <span class="q-dot">Estados y feedback</span>
+              <span class="q-dot">Accesibilidad</span>
+            </div>
           </div>
-        </div>
 
-        <div class="tier baja">
-          <div class="tier-bar"></div>
-          <div>
-            <div class="tier-label">Baja prioridad</div>
-            <div class="tier-items">Elementos visuales puntuales · Ilustración · Ajustes de contenido específicos</div>
+          <div class="q-cell q-evaluar">
+            <div class="q-cell-name">Evaluar</div>
+            <div class="q-items">
+              <span class="q-dot">Navegación y flujos</span>
+              <span class="q-dot">Contenido y tono</span>
+            </div>
+          </div>
+
+          <div class="q-cell q-delegar">
+            <div class="q-cell-name">Delegar</div>
+            <div class="q-items">
+              <span class="q-dot">Ajustes de contenido específicos</span>
+            </div>
+          </div>
+
+          <div class="q-cell q-evitar">
+            <div class="q-cell-name">Evitar por ahora</div>
+            <div class="q-items">
+              <span class="q-dot">Elementos visuales puntuales</span>
+              <span class="q-dot">Ilustración</span>
+            </div>
+          </div>
+          </div>
+
+          <div class="qf-spacer"></div>
+          <div class="qf-xaxis">
+            <span>Bajo</span>
+            <span class="qf-xaxis-title">Esfuerzo</span>
+            <span>Alto</span>
           </div>
         </div>
       </div>
@@ -194,18 +386,7 @@
     </div>
   </nav>
 
-  <script>
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') {
-        var next = document.getElementById('nav-next');
-        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
-      }
-      if (e.key === 'ArrowLeft') {
-        var back = document.getElementById('nav-back');
-        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
-      }
-    });
-  </script>
+  <script src="deck.js"></script>
 
 </body>
 </html>

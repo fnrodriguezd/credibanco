@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>13 — Colaboración con Desarrollo</title>
 <link rel="stylesheet" href="deck.css">
 <style>
@@ -173,11 +174,19 @@
   }
 
   @media (max-width: 900px) {
+    .slide { padding: var(--space-2xl); padding-bottom: 100px; }
         .headline { font-size: 24px; }
     .lower-grid { grid-template-columns: 1fr; gap: var(--space-2xl); }
     .process { grid-template-columns: 1fr 1fr; row-gap: var(--space-2xl); }
-    .step:nth-child(3) { border-left: none; padding-left: 0; }
+    .step:nth-child(3) { border-left: none; padding: 0; }
     .eq-term, .eq-result { font-size: 20px; }
+  }
+
+  @media (max-width: 560px) {
+    .process { grid-template-columns: 1fr; row-gap: var(--space-lg); }
+    .step { border-left: none; padding: 0 0 var(--space-lg) 0; border-bottom: 1px solid var(--border-default); }
+    .step:nth-child(3) { padding: 0 0 var(--space-lg) 0; }
+    .step:last-child { border-bottom: none; padding-bottom: 0; }
   }
 
   /* ---------- Deck navigation ---------- */
@@ -281,20 +290,7 @@
     </div>
   </nav>
 
-  <script>
-    document.addEventListener('keydown', function (e) {
-      var tag = document.activeElement.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-      if (e.key === 'ArrowRight') {
-        var next = document.getElementById('nav-next');
-        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
-      }
-      if (e.key === 'ArrowLeft') {
-        var back = document.getElementById('nav-back');
-        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
-      }
-    });
-  </script>
+  <script src="deck.js"></script>
 
 </body>
 </html>
