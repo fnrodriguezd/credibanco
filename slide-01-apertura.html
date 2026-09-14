@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>01 — Apertura</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -110,11 +111,29 @@
     margin-top: var(--space-3xl);
   }
 
+  @keyframes swatch-in {
+    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+    60% { transform: scale(1.15) rotate(10deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+
   .swatch {
     width: 28px;
     height: 28px;
     border-radius: var(--radius-sm);
+    animation: swatch-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    transition: transform 0.25s ease;
+    cursor: default;
   }
+
+  .swatch:hover {
+    transform: rotate(25deg) scale(1.15);
+  }
+
+  .swatch:nth-child(1) { animation-delay: 0.1s; }
+  .swatch:nth-child(2) { animation-delay: 0.2s; }
+  .swatch:nth-child(3) { animation-delay: 0.3s; }
+  .swatch:nth-child(4) { animation-delay: 0.4s; }
 
   .swatch.black { background: var(--brand-black); }
   .swatch.teal { background: var(--brand-teal); }
@@ -271,18 +290,7 @@
     </div>
   </nav>
 
-  <script>
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') {
-        var next = document.getElementById('nav-next');
-        if (next && next.tagName === 'A') window.location.href = next.getAttribute('href');
-      }
-      if (e.key === 'ArrowLeft') {
-        var back = document.getElementById('nav-back');
-        if (back && back.tagName === 'A') window.location.href = back.getAttribute('href');
-      }
-    });
-  </script>
+  <script src="deck.js"></script>
 
 </body>
 </html>
